@@ -1,0 +1,16 @@
+import json
+import random
+
+# Load the JSON file
+with open('names.json', 'r') as file:
+    names_dict = json.load(file)
+
+names_list = list(names_dict.keys())
+random_names = random.sample(names_list, 20)
+
+for name in random_names:
+    details = names_dict[name]
+    print("Name: {}".format(name))
+    print("  Gender: {}".format(details['gender']))
+    print("  Country: {}".format(details['country']))
+    print()
