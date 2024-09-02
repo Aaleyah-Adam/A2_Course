@@ -1,0 +1,27 @@
+def count_number_of_unique_words(filename):
+    word_count = {
+
+    }
+
+    with open(filename, 'r') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower()
+                # Remove punctuation
+                word = word.strip('.,!?()[]{}":;')
+
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+
+    return word_count
+
+
+filename = 'romeojuliet.txt'
+word_count = count_number_of_unique_words(filename)
+
+print("Number of unique words:", len(word_count))
+for word, count in word_count.items():
+    print(word, count)
