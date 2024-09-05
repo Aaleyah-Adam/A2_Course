@@ -1,0 +1,4 @@
+MyList = ["Kuala Lumpur","London","Paris","New York","Bangkok"]
+
+#Insert your code here
+print(*MyList[1:4], sep="-")
