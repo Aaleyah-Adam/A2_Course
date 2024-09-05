@@ -1,0 +1,7 @@
+MyList = ["Kuala Lumpur","London","Paris","New York","Bangkok"]
+
+count = 0
+
+for i in MyList:
+    print(count, MyList[count])
+    count += 1
