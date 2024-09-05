@@ -1,0 +1,10 @@
+MyList = ["Kuala Lumpur","London","Paris","New York","Bangkok"]
+
+MyList.append("Oxford")
+print(MyList)
+
+MyList[1] = "Rome"
+print(MyList)
+
+MyList[4] = "Tokyo"
+print(MyList)
