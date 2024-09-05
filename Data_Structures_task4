@@ -1,0 +1,46 @@
+import array
+import timeit
+
+size = 100000 # Adjust to see the difference. This takes about 5 seconds on an Intel Macbook.
+
+# Create an array of integers
+arr = array.array('i', range(size))
+
+# Create a list of integers
+lst = list(range(size))
+
+# Measure memory usage
+import sys
+print(f"Array memory usage: {sys.getsizeof(arr)} bytes")
+print(f"List memory usage: {sys.getsizeof(lst)} bytes")
+
+# This might take a few seconds.
+# Measure time for a simple operation
+array_time = timeit.timeit("sum(arr)", setup="from __main__ import arr", number=1000)
+print(f"Array sum time: {array_time} seconds")
+list_time = timeit.timeit("sum(lst)", setup="from __main__ import lst", number=1000)
+print(f"List sum time: {list_time} seconds")
+
+"""
+Memory Usage
+Arrays: More memory-efficient because they store elements of the same type and allocate a fixed amount of memory for each element.
+Lists: Less memory-efficient because they can store elements of different types, requiring more overhead to handle this flexibility.
+Speed:
+
+
+Speed
+Arrays: Faster for numerical computations and operations due to the fixed type and reduced overhead.
+Lists: Slower for numerical computations due to type flexibility and additional overhead.
+Type Constraints:
+
+
+Type Constraints
+Arrays: Can only store elements of the same type, ensuring more efficient memory usage and operations.
+Lists: Can store elements of different types, offering more flexibility but at the cost of efficiency.
+Use Cases:
+
+
+Use Cases
+Arrays: Best for numerical data and situations where memory efficiency and speed are critical, such as scientific computing and data analysis.
+Lists: Best for general-purpose use, where flexibility in storing different types of data is needed.
+"""
