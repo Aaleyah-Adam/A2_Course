@@ -1,0 +1,81 @@
+import random #added random module -> setter
+
+class Character: #classes can be accessed from anywhere and you can have multiple objects
+    def __init__(self): #initialise attributes, two underscores needed (dunder)
+        self.name = "" #these are attributes
+        self.attack = 0
+        self.defence = 0
+        self._health = 0 #health is now a local, private variable within the function
+        self.experience = 0
+
+    # private attributes:
+    # a single _ suggests that a variable is within a class and shouldnt be played with unless you REALLY want to
+    # a double __ makes it private (but possible to override in python)
+
+    def print_basics(self): #this is a method
+        print("Name: ", self.name)
+        print("Attack: ", self.attack)
+        print("Defence: ", self.defence)
+        print("Health: ", self._health)
+        print("Experience: ", self.experience)
+
+    def print_me(self): #to see polymorphism
+        self.print_basics()
+
+    def print_intro(self): #can see difference between inheriting a method vs attribute
+        print("This is an exciting story")
+
+
+class wizard(Character):
+    def __init__(self):
+        Character.__init__(self) #need to add in parent class
+        self.magic = 0
+
+    def print_me(self):
+        self.print_basics()
+        print("Magic: ", self.magic)
+
+
+class knight(Character):
+    def __init__(self):
+        Character.__init__(self)
+        self.armour = 0
+
+    def setter(self, name): #declaring a knight using a setter (random values)
+        self.name = name
+        self.attack = random.randint(0,50)
+        self.defence = random.randint(0,50)
+        self._health = random.randint(10,50)
+        self.armour = 30
+
+    def health_getter(self):
+        return self._health
+
+    class weapon: #You can have a class within a class this is called containment
+        def attack():
+            print("He swishes his sword")
+
+    def print_me(self):
+        self.print_basics()
+        print("Armour: ", self.armour)
+
+
+
+#CIE IS NOT TOO KEEN ON THIS BUT ITS HOW YOU DO IT IN THE REAL WORLD
+Aaleyah = Character() #you can now call the methods in the instance
+Aaleyah.print_basics()
+Aaleyah.name = "Aaleyah"
+print(Aaleyah.name)
+
+Merlin = wizard() #the class wizard inherits all the attributes of the parent class, Character
+Merlin.name = "Merlin"
+Merlin.print_me()
+print(vars(Merlin)) #prints all the variables available in a class -> helpful for debugging
+
+Arthur = knight()
+Arthur.setter("Arthur")
+Arthur.weapon.attack()
+Arthur.print_me()
+
+print(Arthur.health_getter()) #can use a getter to access private attributes
+#CIE LOVES PRIVATE ATTRIBUTES SO KNOW HOW TO USE THEM + USE SETTERS AND GETTERS 
